@@ -1,11 +1,15 @@
-<h1>Home</h1>
+<!-- <h1>Home</h1> -->
 
 <% if current_user %>
-  Logged in User
+  Welcome, <%= current_user.name %>
+
+  <%#= image_tag current_user.image, class: "img-fluid" %>
 <% end %>
 
 <% if !current_user %>
-  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-block, btn-social btn-google" do %>
+    <span class="fa fa-google"></span> Sign in with Google
+  <% end %>
 <% else %>
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 <% end %>
